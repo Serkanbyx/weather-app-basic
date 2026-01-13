@@ -1,0 +1,84 @@
+{
+  "cities": {
+    "new york": {
+      "name": "New York",
+      "temperature": 18,
+      "feelsLike": 17,
+      "description": "partly cloudy",
+      "icon": "fa-cloud-sun",
+      "windSpeed": "15 km/h",
+      "humidity": "65%",
+      "visibility": "10 km"
+    },
+    "london": {
+      "name": "London",
+      "temperature": 12,
+      "feelsLike": 10,
+      "description": "clear",
+      "icon": "fa-sun",
+      "windSpeed": "8 km/h",
+      "humidity": "45%",
+      "visibility": "15 km"
+    },
+    "tokyo": {
+      "name": "Tokyo",
+      "temperature": 22,
+      "feelsLike": 21,
+      "description": "sunny",
+      "icon": "fa-sun",
+      "windSpeed": "12 km/h",
+      "humidity": "55%",
+      "visibility": "12 km"
+    },
+    "paris": {
+      "name": "Paris",
+      "temperature": 16,
+      "feelsLike": 15,
+      "description": "cloudy",
+      "icon": "fa-cloud",
+      "windSpeed": "14 km/h",
+      "humidity": "70%",
+      "visibility": "8 km"
+    },
+    "berlin": {
+      "name": "Berlin",
+      "temperature": 10,
+      "feelsLike": 8,
+      "description": "partly cloudy",
+      "icon": "fa-cloud-sun",
+      "windSpeed": "20 km/h",
+      "humidity": "40%",
+      "visibility": "12 km"
+    },
+    "sydney": {
+      "name": "Sydney",
+      "temperature": 25,
+      "feelsLike": 26,
+      "description": "sunny",
+      "icon": "fa-sun",
+      "windSpeed": "10 km/h",
+      "humidity": "60%",
+      "visibility": "15 km"
+    },
+    "dubai": {
+      "name": "Dubai",
+      "temperature": 28,
+      "feelsLike": 30,
+      "description": "clear",
+      "icon": "fa-sun",
+      "windSpeed": "6 km/h",
+      "humidity": "50%",
+      "visibility": "18 km"
+    },
+    "mumbai": {
+      "name": "Mumbai",
+      "temperature": 14,
+      "feelsLike": 13,
+      "description": "rainy",
+      "icon": "fa-cloud-rain",
+      "windSpeed": "18 km/h",
+      "humidity": "85%",
+      "visibility": "5 km"
+    }
+  }
+}

@@ -78,10 +78,9 @@ class WeatherApp {
         document.getElementById('cityName').textContent = cityData.name;
         document.getElementById('dateTime').textContent = this.getCurrentDateTime();
 
-        // Update weather icon
+        // Update weather icon (Font Awesome renders via the inner <i> element)
         const weatherIcon = document.getElementById('weatherIcon');
-        weatherIcon.className = `weather-icon ${cityData.icon}`;
-        weatherIcon.innerHTML = `<i class="fas ${cityData.icon}"></i>`;
+        weatherIcon.replaceChildren(this.createIcon(cityData.icon));
 
         // Update temperature
         document.getElementById('temperature').textContent = cityData.temperature;
@@ -96,6 +95,13 @@ class WeatherApp {
         document.getElementById('visibility').textContent = cityData.visibility;
     }
 
+    createIcon(iconClass) {
+        const icon = document.createElement('i');
+        icon.className = `fas ${iconClass}`;
+        icon.setAttribute('aria-hidden', 'true');
+        return icon;
+    }
+
     getCurrentDateTime() {
         const now = new Date();
         const options = {
@@ -106,7 +112,8 @@ class WeatherApp {
             hour: '2-digit',
             minute: '2-digit'
         };
-        return now.toLocaleDateString('en-US', options);
+        // toLocaleString honors the time options; toLocaleDateString would drop them.
+        return now.toLocaleString('en-US', options);
     }
 
     renderCityButtons() {
@@ -115,23 +122,19 @@ class WeatherApp {
         const cityButtonsContainer = document.getElementById('cityButtons');
         const cities = Object.keys(this.weatherData.cities);
 
-        cityButtonsContainer.innerHTML = cities.map(cityKey => {
-            const cityName = this.weatherData.cities[cityKey].name;
-            return `
-                <button class="city-btn" data-city="${cityKey}">
-                    ${cityName}
-                </button>
-            `;
-        }).join('');
-
-        // Add event listeners to city buttons
-        cityButtonsContainer.querySelectorAll('.city-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const cityKey = e.target.getAttribute('data-city');
+        const buttons = cities.map((cityKey) => {
+            const button = document.createElement('button');
+            button.className = 'city-btn';
+            button.type = 'button';
+            button.textContent = this.weatherData.cities[cityKey].name;
+            button.addEventListener('click', () => {
                 document.getElementById('cityInput').value = '';
                 this.searchCity(cityKey);
             });
+            return button;
         });
+
+        cityButtonsContainer.replaceChildren(...buttons);
     }
 
     showError(message) {

@@ -21,6 +21,8 @@ A modern, user-friendly weather application built with vanilla JavaScript. This 
 
 [🎮 View Live Demo](https://weather-app-basicc.netlify.app/)
 
+For a step-by-step account of how this project was built (phases, architecture, and decisions), see the [Build Guide](docs/build-guide.md).
+
 ## Technologies
 
 - **HTML5**: Semantic and accessible markup structure
@@ -116,11 +118,11 @@ async loadWeatherData() {
 
 ```javascript
 searchCity(cityName) {
-    const cityData = this.weatherData.cities[cityName.toLowerCase()];
+    const cityData = this.weatherData.cities[cityName];
     if (cityData) {
         this.displayWeather(cityData);
     } else {
-        this.showError(`No data found for "${cityName}"`);
+        this.showError(`No data found for "${cityName}". Please try a different city.`);
     }
 }
 ```
@@ -137,7 +139,7 @@ The application dynamically updates the DOM with weather information:
 
 ### Date Formatting
 
-The current date and time are formatted using JavaScript's `Intl.DateTimeFormat`:
+The current date and time are formatted using JavaScript's `toLocaleString`, which honors both the date and time options:
 
 ```javascript
 getCurrentDateTime() {
@@ -150,7 +152,7 @@ getCurrentDateTime() {
         hour: '2-digit',
         minute: '2-digit'
     };
-    return now.toLocaleDateString('en-US', options);
+    return now.toLocaleString('en-US', options);
 }
 ```
 
